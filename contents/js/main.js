@@ -4,7 +4,6 @@ $(document).ready(function() {
   // fix navbar to top
   $(document).scroll(function() {
     var scroll = $(this).scrollTop();
-    var topDistNav = $('.navbar').position();
     var topDistTitle = $('.page-header').position();
     if (scroll > topDistTitle.top) {
       $('#website-title').addClass('fixed');
