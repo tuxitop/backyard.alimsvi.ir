@@ -54,6 +54,6 @@
     "markdown-it-center-text": {}
   },
   "paginator": {
-    "perPage": 3
+    "perPage": 10
   }
 }
