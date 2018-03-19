@@ -1,0 +1,36 @@
+/**
+ * Basic typography style for copy text
+ */
+body {
+  color: $text-color;
+  font: normal 1.8em / 1.6 $text-font-stack;
+  background-color: $page-bg-color;
+}
+
+.article header a {
+  color: darken($brand-color, 20%);
+
+  &:hover {
+    color: darken($brand-color, 30%);
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $header-font-stack;
+}
+
+.copyright,
+.meta {
+  font-size: 0.8em;
+}
+
+@media (max-width: 767px) {
+  h2 {
+    font-size: 25px;
+  }
+}

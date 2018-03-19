@@ -1,0 +1,59 @@
+{
+  "locals": {
+    "url": "http://localhost:3000",
+    "name": "قصه‌های حیاط پشتی",
+    "owner": "Ali Mousavi",
+    "description": "یا حکایت آن چه این روزها، در این پشت می‌گذرد...",
+    "disqusID": "alimsvi",
+    "sitemap": "sitemap.xml",
+    "noindex": "false",
+    "environment": "development",
+    "socialMedia": [
+      {
+        "name": "github",
+        "href": "https://github.com/tuxitop/alimsvi.ir",
+        "icon": "fa-github"
+      },
+      {
+        "name": "twitter",
+        "href": "https://twitter.com/tuxitop",
+        "icon": "fa-twitter"
+      },
+      {
+        "name": "rss",
+        "href": "/feed.xml",
+        "icon": "fa-rss"
+      }
+    ],
+    "navbar": {
+      "آرشیو": "/archive.html",
+      "داده‌های خام": "http://alimsvi.ir"
+    }
+  },
+  "plugins": [
+    "./plugins/paginator.coffee",
+    "wintersmith-livereload",
+    "wintersmith-tag",
+    "wintersmith-contents",
+    "wintersmith-robots",
+    "./plugins/wintersmith-markdown-it/src/index.coffee"
+  ],
+  "require": {
+    "moment": "moment-jalaali",
+    "_": "underscore",
+    "typogr": "typogr"
+  },
+  "jade": {
+    "pretty": true
+  },
+  "markdown-it": {
+    "settings": {
+      "linkify": true
+    },
+    "markdown-it-block-embed": {},
+    "markdown-it-center-text": {}
+  },
+  "paginator": {
+    "perPage": 3
+  }
+}

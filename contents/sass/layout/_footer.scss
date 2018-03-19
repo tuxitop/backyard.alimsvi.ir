@@ -1,0 +1,18 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the footer of the site/application.
+// -----------------------------------------------------------------------------
+
+.load-more {
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+footer {
+  color: $light-grey;
+  background-color: $dark-grey;
+  margin-top: 40px;
+
+  .container {
+    padding: 50px;
+  }
+}

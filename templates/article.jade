@@ -1,0 +1,45 @@
+extends layout
+
+block vars
+  - var bodyClass = "article-page"
+
+block title
+  | #{page.title} | #{locals.name} | علی موسوی
+
+block content
+  div.container.body-container
+    .list-articles
+      article.article.full
+        .row
+          .col-md-2.hidden-xs.hidden-sm.meta.meta-sidebar
+            .date.text-muted
+              span.fa.fa-calendar
+              span= moment.utc(page.date).format('jDD jMMMM jYYYY')
+            .comments.text-muted
+              span.fa.fa-comment
+              a(href='#disqus_thread') دیدگاه‌ها
+          .col-md-8.col-sm-12(role="main")
+            header
+              h2
+                a(href=page.url)= page.title
+              .meta.hidden-md.hidden-lg.text-muted
+                span.fa.fa-calendar
+                span= moment.utc(page.date).format('jDD jMMMM jYYYY')
+                span.seperator -
+                span.fa.fa-comment 
+                a(href='#disqus_thread') دیدگاه‌ها
+            section.content!= typogr(page.html).typogrify()
+
+  .container.section-container.subscribe
+    .row
+      .col-md-offset-2.col-md-8
+        include subscribe-embeded                
+
+  .container.section-container.comments
+    .row
+      .col-md-offset-2.col-md-8
+        //- include disqus
+
+block append javascripts
+  if page.metadata.mathjax
+    include mathjax

@@ -1,0 +1,68 @@
+{
+  "_from": "wintersmith-markdown-it",
+  "_id": "wintersmith-markdown-it@0.1.1",
+  "_inBundle": false,
+  "_integrity": "sha1-V+b1uOMsqZa9HyhBm0twEyX5Vu0=",
+  "_location": "/wintersmith-markdown-it",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "wintersmith-markdown-it",
+    "name": "wintersmith-markdown-it",
+    "escapedName": "wintersmith-markdown-it",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/wintersmith-markdown-it/-/wintersmith-markdown-it-0.1.1.tgz",
+  "_shasum": "57e6f5b8e32ca996bd1f28419b4b701325f956ed",
+  "_spec": "wintersmith-markdown-it",
+  "_where": "/home/ali/Documents/Activities/my_projects/backyard stories/wintersmith",
+  "author": {
+    "name": "David Waite",
+    "email": "david@alkaline-solutions.com",
+    "url": "https://alkaline.solutions/"
+  },
+  "bugs": {
+    "url": "https://github.com/dwaite/wintersmith-markdown-it/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "async": "^2.0.1",
+    "highlight.js": "^9.7.0",
+    "in-publish": "^2.0.0",
+    "markdown-it": "^8.0.0"
+  },
+  "deprecated": false,
+  "description": "Wintersmith plugin to perform markdown processing with Markdown-it",
+  "devDependencies": {
+    "coffee-script": "^1.11.1"
+  },
+  "homepage": "https://github.com/dwaite/wintersmith-markdown.it",
+  "keywords": [
+    "wintersmith",
+    "markdown",
+    "markdown-it",
+    "plugin"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "wintersmith-markdown-it",
+  "peerDependencies": {
+    "wintersmith": "^2.3.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dwaite/wintersmith-markdown-it.git"
+  },
+  "scripts": {
+    "prepublish": "not-in-install && coffee -o lib/ -cm src/ || in-install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.1.1"
+}

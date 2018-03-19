@@ -1,0 +1,130 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+// Header
+.header {
+  background-color: $header-bg-color;
+
+  > .container::after {
+    background: url('images/divide_pattern.png') repeat-X;
+    height: 19px;
+    display: block;
+    content: '';
+  }
+}
+
+.page-header {
+  margin-bottom: 0;
+  border-bottom: 0;
+  padding-bottom: 0;
+
+  @media (min-width: map-get($breakpoints, medium)) {
+    background: url('images/backyardstories_tree.png') no-repeat;
+    height: 248px;
+  }
+
+  &::after {
+    background: url('images/divide_pattern.png') repeat-X 0 0;
+  }
+
+  .title {
+    @include transition(0.5s ease);
+    z-index: 15;
+    margin-top: 15px;
+
+    a {
+      color: $dark-grey;
+    }
+  }
+
+  .subtitle {
+    color: $mid-grey;
+  }
+
+  .fixed {
+    position: fixed;
+    top: 0;
+    font-size: 24px;
+  }
+
+  .fixed a {
+    color: $light-grey;
+  }
+}
+
+// Navbar
+header {
+  .navbar {
+    margin-bottom: 0;
+  }
+
+  .fixed {
+    position: fixed;
+    margin-top: 0;
+    top: 0;
+  }
+
+  nav {
+    z-index: 10;
+    width: 100%;
+    // background-color: $light-grey;
+    .container {
+      // border-bottom: 1px solid $mid-grey;
+      background-color: $dark-grey;
+      border-radius: 0 0 5px 5px;
+  }
+}
+
+  .icon-bar {
+    background-color: $light-grey;
+  }
+}
+// menus
+.menu {
+  a {
+    color: $light-grey;
+  }
+}
+
+.menu .active a,
+.nav > li > a:focus,
+.nav > li > a:hover {
+  color: $dark-grey;
+  background-color: $light-grey;
+}
+
+// Socal media icons
+.social-media {
+  font-size: 30px;
+
+  ul {
+    padding-right: 15px;
+  }
+
+  .fa {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+
+  .fa-telegram {
+    font-size: 26px;
+    color: rgb(0, 136, 204);
+  }
+
+  .fa-github {
+    // color: rgb(51, 51, 51);
+    color: rgb(220, 220, 220);
+  }
+
+  .fa-twitter {
+    color: rgb(29, 161, 242);
+  }
+
+  .fa-rss {
+    color: rgb(242, 101, 34);
+  }
+
+  a:hover {
+    text-shadow: 2px 4px 6px #333;
+  }
+}

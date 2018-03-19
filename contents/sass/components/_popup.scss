@@ -1,0 +1,74 @@
+.popup {
+  width: 400px;
+  bottom: 20px;
+  left: -380px;
+  position: fixed;
+  z-index: 100;
+  transition: 0.5s;
+
+  .subscribe {
+    width: 380px;
+    height: 180px;
+    background-color: $page-bg-color;
+    border-radius: 5px;
+    box-shadow: 20px 20px 20px 0 rgba(0, 0, 0, 0.5);
+    padding: 0 20px 20px;
+    float: left;
+  }
+
+  .toggle {
+    cursor: pointer;
+    z-index: 500;
+  }
+
+  .toggle-large {
+    float: right;
+    padding: 20px 5px 20px 2px;
+    background-color: $page-bg-color;
+    margin: 60px 0;
+    border-radius: 0 5px 5px 0;
+    box-shadow: 20px 20px 20px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+}
+
+.popup-expanded {
+  left: 20px;
+}
+
+@media (max-width: map-get($breakpoints, medium)) {
+  .popup {
+    width: 100%;
+    left: 0;
+    bottom: -180px;
+
+    .toggle-small {
+      display: block;
+      background-color: darken($page-bg-color, 10%);
+      text-align: center;
+    }
+
+    .subscribe {
+      width: auto;
+      float: none;
+      box-shadow: none;
+      border-radius: 0;
+    }
+
+    .button {
+      width: 35% !important;
+      padding: 10px !important;
+      white-space: normal !important;
+      height: auto !important;
+      line-height: 15px !important;
+    }
+  }
+
+  .popup-expanded {
+    left: 0;
+    bottom: 0;
+  }
+}
