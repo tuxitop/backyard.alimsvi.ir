@@ -17,7 +17,7 @@ block content
               span= moment.utc(page.date).format('jDD jMMMM jYYYY')
             .comments.text-muted
               span.fa.fa-comment
-              a(href='#disqus_thread') دیدگاه‌ها
+              a(href='#disqus_thread') نظر دهید
           .col-md-8.col-sm-12(role="main")
             header
               h2
@@ -27,7 +27,7 @@ block content
                 span= moment.utc(page.date).format('jDD jMMMM jYYYY')
                 span.seperator -
                 span.fa.fa-comment 
-                a(href='#disqus_thread') دیدگاه‌ها
+                a(href='#disqus_thread') نظر دهید
             section.content!= typogr(page.html).typogrify()
 
   .container.section-container.subscribe

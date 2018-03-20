@@ -15,7 +15,7 @@ block content
                 span= moment.utc(article.date).format('jDD jMMMM jYYYY')
               .comments.text-muted
                 span.fa.fa-comment 
-                a(href=article.url + '#disqus_thread') دیدگاه‌ها
+                a(href=article.url + '#disqus_thread') نظر دهید
             .col-md-8.col-sm-12(role="main")
               header
                 h2
@@ -25,7 +25,7 @@ block content
                   span= moment.utc(article.date).format('jDD jMMMM jYYYY')
                   span.seperator -
                   span.fa.fa-comment 
-                  a(href=article.url + '#disqus_thread') دیدگاه‌ها
+                  a(href=article.url + '#disqus_thread') نظر دهید
               .section.content
                 if article.intro.length > 0
                   != typogr(article.intro).typogrify()
