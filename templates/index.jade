@@ -7,32 +7,40 @@ block content
   div.container.body-container
     .list-articles
       each article in articles
-        article.article.intro
+        article.article.intro(itemscope itemtype="http://schema.org/Article")
           .row
             .col-md-2.hidden-xs.hidden-sm.meta.meta-sidebar
               .data.text-muted
                 span.fa.fa-calendar
-                span= moment.utc(article.date).format('jDD jMMMM jYYYY')
+                spanspan(itemprop="datePublished" content="#{article.date.getFullYear()}-#{('0' + (article.date.getMonth()+1)).slice(-2)}-#{('0' + article.date.getDate()).slice(-2)}")
+                  = moment.utc(article.date).format('jDD jMMMM jYYYY')
               .comments.text-muted
                 span.fa.fa-comment 
                 a(href=article.url + '#disqus_thread') نظر دهید
             .col-md-8.col-sm-12(role="main")
               header
                 h2
-                  a(href=article.url)= article.title
+                  a(href=article.url)
+                    span(itemprop="name")= article.title
                 .meta.hidden-md.hidden-lg.text-muted
                   span.fa.fa-calendar
-                  span= moment.utc(article.date).format('jDD jMMMM jYYYY')
+                  spanspan(itemprop="datePublished" content="#{article.date.getFullYear()}-#{('0' + (article.date.getMonth()+1)).slice(-2)}-#{('0' + article.date.getDate()).slice(-2)}")
+                    = moment.utc(article.date).format('jDD jMMMM jYYYY')
                   span.seperator -
                   span.fa.fa-comment 
                   a(href=article.url + '#disqus_thread') نظر دهید
               .section.content
+                meta(itemprop="articleBody" content="#{article.html}")
                 if article.intro.length > 0
                   != typogr(article.intro).typogrify()
                 if article.hasMore
                   p.more
                     a(href=article.url) ادامه مطلب...
-
+          
+          meta(itemprop="url" content="#{article.getUrl(locals.url)}")
+          span(itemprop="author" itemscope itemtype="http://schema.org/Person")
+            meta(itemprop="name" content="#{article.metadata.author}")
+          
       if nextPage
         .load-more.bg-success
           p.text-center در حال بارگزاری مقالات بیشتر...

@@ -2,6 +2,21 @@ extends layout
 
 block vars
   - var bodyClass = "article-page"
+  
+block append head
+  script(type='application/ld+json').
+    {
+      '@context': 'http://schema.org',
+      '@type': 'Article',
+      'name': '#{page.title}',
+      'author': {
+        '@type': 'Person',
+        'name': '#{page.metadata.author}'
+      },
+      'datePublished': '#{page.date.getFullYear()}-#{("0" + (page.date.getMonth()+1)).slice(-2)}-#{("0" + page.date.getDate()).slice(-2)}',
+      'articleBody': '#{page.html}',
+      'url': '#{page.getUrl(locals.url)}',
+    }
 
 block title
   | #{page.title} | #{locals.name} | علی موسوی
@@ -9,27 +24,35 @@ block title
 block content
   div.container.body-container
     .list-articles
-      article.article.full
+      article.article.full(itemscope itemtype="http://schema.org/Article")
         .row
           .col-md-2.hidden-xs.hidden-sm.meta.meta-sidebar
             .date.text-muted
               span.fa.fa-calendar
-              span= moment.utc(page.date).format('jDD jMMMM jYYYY')
+              span(itemprop="datePublished" content="#{page.date.getFullYear()}-#{('0' + (page.date.getMonth()+1)).slice(-2)}-#{('0' + page.date.getDate()).slice(-2)}")
+                = moment.utc(page.date).format('jDD jMMMM jYYYY')
             .comments.text-muted
               span.fa.fa-comment
               a(href='#disqus_thread') نظر دهید
           .col-md-8.col-sm-12(role="main")
             header
               h2
-                a(href=page.url)= page.title
+                a(href=page.url)
+                  span(itemprop="name")= page.title
               .meta.hidden-md.hidden-lg.text-muted
                 span.fa.fa-calendar
-                span= moment.utc(page.date).format('jDD jMMMM jYYYY')
+                span(itemprop="datePublished" content="#{page.date.getFullYear()}-#{('0' + (page.date.getMonth()+1)).slice(-2)}-#{('0' + page.date.getDate()).slice(-2)}")
+                  = moment.utc(page.date).format('jDD jMMMM jYYYY')
                 span.seperator -
                 span.fa.fa-comment 
                 a(href='#disqus_thread') نظر دهید
-            section.content!= typogr(page.html).typogrify()
-
+            section.content
+              meta(itemprop="articleBody" content="#{page.html}")
+              != typogr(page.html).typogrify()
+        
+        meta(itemprop="url" content="#{page.getUrl(locals.url)}")
+        span(itemprop="author" itemscope itemtype="http://schema.org/Person")
+          meta(itemprop="name" content="#{page.metadata.author}")
   .container.section-container.subscribe
     .row
       .col-md-offset-2.col-md-8
