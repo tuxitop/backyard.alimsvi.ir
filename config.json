@@ -35,6 +35,7 @@
     "wintersmith-livereload",
     "wintersmith-tag",
     "wintersmith-contents",
+    "wintersmith-sitemap",
     "wintersmith-robots",
     "./plugins/wintersmith-markdown-it/src/index.coffee"
   ],
