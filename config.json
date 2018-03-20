@@ -6,7 +6,6 @@
     "description": "یا حکایت آن چه این روزها، در این پشت می‌گذرد...",
     "disqusID": "mrwill",
     "sitemap": "sitemap.xml",
-    "noindex": "false",
     "environment": "development",
     "socialMedia": [
       {
@@ -43,10 +42,6 @@
     "moment": "moment-jalaali",
     "_": "underscore",
     "typogr": "typogr"
-  },
-  "locals": {
-    "sitemap": "sitemap.xml",
-    "noindex": "false"
   },
   "jade": {
     "pretty": true
