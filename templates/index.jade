@@ -47,12 +47,15 @@ block content
         article.article.intro(itemscope itemtype="http://schema.org/BlogPosting")
           .row
             .col-md-2.hidden-xs.hidden-sm.meta.meta-sidebar
-              .data.text-muted
-                span.fa.fa-calendar
+              .date.text-muted
+                i.fa.fa-calendar
                 span(itemprop="datePublished" content="#{article.date.getFullYear()}-#{('0' + (article.date.getMonth()+1)).slice(-2)}-#{('0' + article.date.getDate()).slice(-2)}")
                   = moment.utc(article.date).format('jDD jMMMM jYYYY')
+              .read-time.text-muted
+                i.fa.fa-clock-o
+                span!= Math.ceil(article.html.replace(/<(?:.|\n)*?>/gm, '').split(' ').length / 275) + ' دقیقه مطالعه'
               .comments.text-muted
-                span.fa.fa-comment 
+                i.fa.fa-comment 
                 a(href=article.url + '#disqus_thread') نظر دهید
             .col-md-8.col-sm-12(role="main")
               header
@@ -64,8 +67,11 @@ block content
                   span(itemprop="datePublished" content="#{article.date.getFullYear()}-#{('0' + (article.date.getMonth()+1)).slice(-2)}-#{('0' + article.date.getDate()).slice(-2)}")
                     = moment.utc(article.date).format('jDD jMMMM jYYYY')
                   span.seperator -
-                  span.fa.fa-comment 
-                  a(href=article.url + '#disqus_thread') نظر دهید
+                  i.fa.fa-clock-o
+                  span!= Math.ceil(article.html.replace(/<(?:.|\n)*?>/gm, '').split(' ').length / 275) + ' دقیقه مطالعه'
+                  .comments
+                    i.fa.fa-comment 
+                    a(href='#disqus_thread') نظر دهید
               .section.content
                 meta(itemprop="articleBody" content="#{article.html}")
                 if article.intro.length > 0

@@ -46,11 +46,14 @@ block content
         .row
           .col-md-2.hidden-xs.hidden-sm.meta.meta-sidebar
             .date.text-muted
-              span.fa.fa-calendar
+              i.fa.fa-calendar
               span(itemprop="datePublished" content="#{page.date.getFullYear()}-#{('0' + (page.date.getMonth()+1)).slice(-2)}-#{('0' + page.date.getDate()).slice(-2)}")
                 = moment.utc(page.date).format('jDD jMMMM jYYYY')
+            .read-time.text-muted
+              i.fa.fa-clock-o
+              span!= Math.ceil(page.html.replace(/<(?:.|\n)*?>/gm, '').split(' ').length / 275) + ' دقیقه مطالعه'
             .comments.text-muted
-              span.fa.fa-comment
+              i.fa.fa-comment
               a(href='#disqus_thread') نظر دهید
           .col-md-8.col-sm-12(role="main")
             header
@@ -58,12 +61,16 @@ block content
                 a(href=page.url)
                   span(itemprop="headline name")= page.title
               .meta.hidden-md.hidden-lg.text-muted
-                span.fa.fa-calendar
+                i.fa.fa-calendar
                 span(itemprop="datePublished" content="#{page.date.getFullYear()}-#{('0' + (page.date.getMonth()+1)).slice(-2)}-#{('0' + page.date.getDate()).slice(-2)}")
                   = moment.utc(page.date).format('jDD jMMMM jYYYY')
                 span.seperator -
-                span.fa.fa-comment 
-                a(href='#disqus_thread') نظر دهید
+                i.fa.fa-clock-o
+                span!= Math.ceil(page.html.replace(/<(?:.|\n)*?>/gm, '').split(' ').length / 275) + ' دقیقه مطالعه'
+                .comments
+                  i.fa.fa-comment 
+                  a(href='#disqus_thread') نظر دهید
+                
             section.content
               meta(itemprop="articleBody" content="#{page.html}")
               != typogr(page.html).typogrify()
