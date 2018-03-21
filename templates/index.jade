@@ -12,30 +12,31 @@ block vars
 block append head
   script(type="application/ld+json").
     {
-      '@context': 'http://schema.org',
-      '@type': 'Blog',
-      'name': '#{locals.name}',
-      'description': '#{locals.description}',
-      'headline': '#{locals.name}',
-      'publisher': {
-        '@type': 'Person',
-        'name': '#{locals.owner}'
+      "@context": "http://schema.org",
+      "@type": "Blog",
+      "name": "#{locals.name}",
+      "description": "#{locals.description}",
+      "headline": "#{locals.name}",
+      "publisher": {
+        "@type": "Organization",
+        "name": "#{locals.name}",
+        "logo": "#{locals.url}#{contents.css.images['backyardstories_cropped.png'].url}"
       },
-      'author': {
-        '@type': 'Person',
-        'name': '#{locals.owner}'
+      "author": {
+        "@type": "Person",
+        "name": "#{locals.owner}"
       },
-      'url': '#{locals.url}',
-      'image':{  
-        '@type':'ImageObject',
-        'contentUrl':'#{locals.url}#{contents.css.images["backyardstories_cropped.png"].url}',
-        "url":"{locals.url}",
-        'width':'258',
-        'height':'267'
+      "url": "#{locals.url}",
+      "image": {  
+        "@type": "ImageObject",
+        "contentUrl": "#{locals.url}#{contents.css.images['backyardstories_cropped.png'].url}",
+        "url": "{locals.url}",
+        "width": "258",
+        "height": "267"
        },
-      'mainEntityOfPage':{  
-        '@type':'WebPage',
-        '@id':'#{locals.url}'
+      "mainEntityOfPage": {  
+        "@type": "WebPage",
+        "@id": "#{locals.url}"
       }
     }
 
@@ -74,8 +75,9 @@ block content
                     a(href=article.url) ادامه مطلب...
           
           meta(itemprop="url" content="#{article.getUrl(locals.url)}")
-          span(itemprop="publisher" itemscope itemtype="http://schema.org/Person")
-            meta(itemprop="name" content="#{locals.owner}")
+          span(itemprop="publisher" itemscope itemtype="http://schema.org/Organization")
+            meta(itemprop="name" content="#{locals.name}")
+            meta(itemprop="logo" content="#{locals.url}#{contents.css.images['backyardstories_cropped.png'].url}")
           span(itemprop="author" itemscope itemtype="http://schema.org/Person")
             meta(itemprop="name" content="#{article.metadata.author}")
           span(itemprop="image" itemscope itemtype="http://schema.org/ImageObject")

@@ -8,32 +8,31 @@ block vars
 block append head
   script(type='application/ld+json').
     {
-      '@context': 'http://schema.org',
-      '@type': 'BlogPosting',
-      'name': '#{page.title}',
-      'headline': '#{page.title}',
-      'publisher': {
-        '@type': 'Person',
-        'name': '#{page.metadata.author}'
+      "@context": "http://schema.org",
+      "@type": "Blog",
+      "name": "#{locals.name}",
+      "description": "#{locals.description}",
+      "headline": "#{locals.name}",
+      "publisher": {
+        "@type": "Organization",
+        "name": "#{locals.name}",
+        "logo": "#{locals.url}#{contents.css.images['backyardstories_cropped.png'].url}"
       },
-      'author': {
-        '@type': 'Person',
-        'name': '#{page.metadata.author}'
+      "author": {
+        "@type": "Person",
+        "name": "#{locals.owner}"
       },
-      'datePublished': '#{page.date.getFullYear()}-#{("0" + (page.date.getMonth()+1)).slice(-2)}-#{("0" + page.date.getDate()).slice(-2)}',
-      'dateModified': '#{page.date.getFullYear()}-#{("0" + (page.date.getMonth()+1)).slice(-2)}-#{("0" + page.date.getDate()).slice(-2)}',
-      'articleBody': '#{page.html}',
-      'url': '#{page.getUrl(locals.url)}',
-      'image':{  
-        '@type':'ImageObject',
-        'contentUrl':'#{locals.url}#{contents.css.images["backyardstories_cropped.png"].url}',
-        "url":"#{locals.url}",
-        'width':'258',
-        'height':'267'
-      },
-      'mainEntityOfPage':{  
-        '@type':'WebPage',
-        '@id':'#{page.getUrl(locals.url)}'
+      "url": "#{locals.url}",
+      "image": {  
+        "@type": "ImageObject",
+        "contentUrl": "#{locals.url}#{contents.css.images['backyardstories_cropped.png'].url}",
+        "url": "{locals.url}",
+        "width": "258",
+        "height": "267"
+       },
+      "mainEntityOfPage": {  
+        "@type": "WebPage",
+        "@id": "#{locals.url}"
       }
     }
 
@@ -70,8 +69,9 @@ block content
               != typogr(page.html).typogrify()
         
         meta(itemprop="url" content="#{page.getUrl(locals.url)}")
-        span(itemprop="publisger" itemscope itemtype="http://schema.org/Person")
-          meta(itemprop="name" content="#{locals.owner}")
+        span(itemprop="publisher" itemscope itemtype="http://schema.org/Organization")
+          meta(itemprop="name" content="#{locals.name}")
+          meta(itemprop="logo" content="#{locals.url}#{contents.css.images['backyardstories_cropped.png'].url}")
         span(itemprop="author" itemscope itemtype="http://schema.org/Person")
           meta(itemprop="name" content="#{page.metadata.author}")
         span(itemprop="image" itemscope itemtype="http://schema.org/ImageObject")
