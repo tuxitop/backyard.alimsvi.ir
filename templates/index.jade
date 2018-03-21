@@ -9,11 +9,41 @@ block vars
       - mathjax = true
       - break
 
+block append head
+  script(type="application/ld+json").
+    {
+      '@context': 'http://schema.org',
+      '@type': 'Blog',
+      'name': '#{locals.name}',
+      'description': '#{locals.description}',
+      'headline': '#{locals.name}',
+      'publisher': {
+        '@type': 'Person',
+        'name': '#{locals.owner}'
+      },
+      'author': {
+        '@type': 'Person',
+        'name': '#{locals.owner}'
+      },
+      'url': '#{locals.url}'
+      'image':{  
+        '@type':'ImageObject',
+        'contentUrl':'#{locals.url}#{contents.css.images["backyardstories_cropped.png"].url}',
+        "url":"{locals.url}",
+        'width':'258',
+        'height':'267'
+       },
+      'mainEntityOfPage':{  
+        '@type':'WebPage',
+        '@id':'#{locals.url}'
+      }
+    }
+
 block content
   div.container.body-container
     .list-articles
       each article in articles
-        article.article.intro(itemscope itemtype="http://schema.org/Article")
+        article.article.intro(itemscope itemtype="http://schema.org/BlogPosting")
           .row
             .col-md-2.hidden-xs.hidden-sm.meta.meta-sidebar
               .data.text-muted
@@ -46,6 +76,10 @@ block content
           meta(itemprop="url" content="#{article.getUrl(locals.url)}")
           span(itemprop="author" itemscope itemtype="http://schema.org/Person")
             meta(itemprop="name" content="#{article.metadata.author}")
+          span(itemprop="image" itemscope itemtype="http://schema.org/ImageObject")
+            mete(itemprop="url" content="#{locals.url}#{contents.css.images['backyardstories_cropped.png'].url}")
+            meta(itemprop="width" content="258")
+            meta(itemprop="height" content="267")
           
       if nextPage
         .load-more.bg-success

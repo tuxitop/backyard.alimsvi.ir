@@ -9,10 +9,13 @@ block append head
   script(type='application/ld+json').
     {
       '@context': 'http://schema.org',
-      '@type': 'Article',
+      '@type': 'BlogPosting',
       'name': '#{page.title}',
       'headline': '#{page.title}',
-      'publisher': '#{locals.name}',
+      'publisher': {
+        '@type': 'Person',
+        'name': '#{page.metadata.author}'
+      },
       'author': {
         '@type': 'Person',
         'name': '#{page.metadata.author}'
@@ -21,6 +24,17 @@ block append head
       'dateModified': '#{page.date.getFullYear()}-#{("0" + (page.date.getMonth()+1)).slice(-2)}-#{("0" + page.date.getDate()).slice(-2)}',
       'articleBody': '#{page.html}',
       'url': '#{page.getUrl(locals.url)}'
+      'image':{  
+        '@type':'ImageObject',
+        'contentUrl':'#{locals.url}#{contents.css.images["backyardstories_cropped.png"].url}',
+        "url":"#{locals.url}",
+        'width':'258',
+        'height':'267'
+       },
+      'mainEntityOfPage':{  
+        '@type':'WebPage',
+        '@id':'#{page.getUrl(locals.url)}'
+      }
     }
 
 block title
@@ -29,7 +43,7 @@ block title
 block content
   div.container.body-container
     .list-articles
-      article.article.full(itemscope itemtype="http://schema.org/Article")
+      article.article.full(itemscope itemtype="http://schema.org/BlogPosting")
         .row
           .col-md-2.hidden-xs.hidden-sm.meta.meta-sidebar
             .date.text-muted
@@ -58,6 +72,10 @@ block content
         meta(itemprop="url" content="#{page.getUrl(locals.url)}")
         span(itemprop="author" itemscope itemtype="http://schema.org/Person")
           meta(itemprop="name" content="#{page.metadata.author}")
+        span(itemprop="image" itemscope itemtype="http://schema.org/ImageObject")
+          mete(itemprop="url" content="#{locals.url}#{contents.css.images['backyardstories_cropped.png'].url}")
+          meta(itemprop="width" content="258")
+          meta(itemprop="height" content="267")
   .container.section-container.subscribe
     .row
       .col-md-offset-2.col-md-8
