@@ -2,6 +2,12 @@ extends layout
 
 block vars
   - var bodyClass = "index-page"
+  - var mathjas = "false"
+  //- load mathjax if required.
+  each article in articles
+    if article.metadata.mathjax
+      - mathjax = true
+      - break
 
 block content
   div.container.body-container
@@ -21,7 +27,7 @@ block content
               header
                 h2
                   a(href=article.url)
-                    span(itemprop="name")= article.title
+                    span(itemprop="headline name")= article.title
                 .meta.hidden-md.hidden-lg.text-muted
                   span.fa.fa-calendar
                   spanspan(itemprop="datePublished" content="#{article.date.getFullYear()}-#{('0' + (article.date.getMonth()+1)).slice(-2)}-#{('0' + article.date.getDate()).slice(-2)}")
@@ -55,6 +61,4 @@ block content
     .toggle.toggle-large.fa.fa-chevron-right.hidden-xs
 
 block append javascripts
-  each article in articles
-    if article.metadata.mathjax
-      include mathjax
+  script(id="dsq-count-scr" src="//#{locals.disqusID}.disqus.com/count.js" async)

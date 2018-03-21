@@ -2,6 +2,8 @@ extends layout
 
 block vars
   - var bodyClass = "article-page"
+  if page.metadata.mathjax
+    - var mathjax = true
   
 block append head
   script(type='application/ld+json').
@@ -9,13 +11,16 @@ block append head
       '@context': 'http://schema.org',
       '@type': 'Article',
       'name': '#{page.title}',
+      'headline': '#{page.title}',
+      'publisher': '#{locals.name}',
       'author': {
         '@type': 'Person',
         'name': '#{page.metadata.author}'
       },
       'datePublished': '#{page.date.getFullYear()}-#{("0" + (page.date.getMonth()+1)).slice(-2)}-#{("0" + page.date.getDate()).slice(-2)}',
+      'dateModified': '#{page.date.getFullYear()}-#{("0" + (page.date.getMonth()+1)).slice(-2)}-#{("0" + page.date.getDate()).slice(-2)}',
       'articleBody': '#{page.html}',
-      'url': '#{page.getUrl(locals.url)}',
+      'url': '#{page.getUrl(locals.url)}'
     }
 
 block title
@@ -38,7 +43,7 @@ block content
             header
               h2
                 a(href=page.url)
-                  span(itemprop="name")= page.title
+                  span(itemprop="headline name")= page.title
               .meta.hidden-md.hidden-lg.text-muted
                 span.fa.fa-calendar
                 span(itemprop="datePublished" content="#{page.date.getFullYear()}-#{('0' + (page.date.getMonth()+1)).slice(-2)}-#{('0' + page.date.getDate()).slice(-2)}")
@@ -64,5 +69,4 @@ block content
         include disqus
 
 block append javascripts
-  if page.metadata.mathjax
-    include mathjax
+  script(id="dsq-count-scr" src="//mrwill.disqus.com/count.js" async)

@@ -1,14 +1,16 @@
 - moment.loadPersian({usePersianDigits: true})
 block vars
-  - var bodyClass = null;
-  - var activePath = null;
+  - var bodyClass = null
+  - var activePath = null
+  - var mathjax = false
 doctype html
 html(lang="en")
   head
     block head
       <!-- Global site tag (gtag.js) - Google Analytics -->
-      script(async src="https://www.googletagmanager.com/gtag/js?id=UA-3973192-2")
-      <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-3973192-2');</script>
+      script(async src="//www.googletagmanager.com/gtag/js?id=#{locals.gaTrackingID}")
+      script.
+        window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '#{locals.gaTrackingID}');
 
       meta(charset="UTF-8")
       meta(name="viewport", content="width=device-width, initial-scale=1.0")
@@ -33,11 +35,13 @@ html(lang="en")
           p copyright &copy; #{ new Date().getFullYear() } #{ locals.owner }
 
     block javascripts
-      script(id="dsq-count-scr" src="//mrwill.disqus.com/count.js" async)
       script(src=contents.js['jquery-3.2.1.min.js'].url)
       script(src=contents.js['bootstrap.min.js'].url)
-
+      script(src=contents.js['main.js'].url)
+      
+      //- load mathjax only if required  
+      if mathjax
+        include mathjax
       //- lightbox stuff
       script(src=contents.js.colorbox['jquery.colorbox-min.js'].url)
       script(src=contents.js.colorbox['jquery.colorbox-fa.js'].url)
-      script(src=contents.js['main.js'].url)
