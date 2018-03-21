@@ -23,14 +23,14 @@ block append head
       'datePublished': '#{page.date.getFullYear()}-#{("0" + (page.date.getMonth()+1)).slice(-2)}-#{("0" + page.date.getDate()).slice(-2)}',
       'dateModified': '#{page.date.getFullYear()}-#{("0" + (page.date.getMonth()+1)).slice(-2)}-#{("0" + page.date.getDate()).slice(-2)}',
       'articleBody': '#{page.html}',
-      'url': '#{page.getUrl(locals.url)}'
+      'url': '#{page.getUrl(locals.url)}',
       'image':{  
         '@type':'ImageObject',
         'contentUrl':'#{locals.url}#{contents.css.images["backyardstories_cropped.png"].url}',
         "url":"#{locals.url}",
         'width':'258',
         'height':'267'
-       },
+      },
       'mainEntityOfPage':{  
         '@type':'WebPage',
         '@id':'#{page.getUrl(locals.url)}'
@@ -70,6 +70,8 @@ block content
               != typogr(page.html).typogrify()
         
         meta(itemprop="url" content="#{page.getUrl(locals.url)}")
+        span(itemprop="publisger" itemscope itemtype="http://schema.org/Person")
+          meta(itemprop="name" content="#{locals.owner}")
         span(itemprop="author" itemscope itemtype="http://schema.org/Person")
           meta(itemprop="name" content="#{page.metadata.author}")
         span(itemprop="image" itemscope itemtype="http://schema.org/ImageObject")

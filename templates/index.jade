@@ -25,7 +25,7 @@ block append head
         '@type': 'Person',
         'name': '#{locals.owner}'
       },
-      'url': '#{locals.url}'
+      'url': '#{locals.url}',
       'image':{  
         '@type':'ImageObject',
         'contentUrl':'#{locals.url}#{contents.css.images["backyardstories_cropped.png"].url}',
@@ -74,6 +74,8 @@ block content
                     a(href=article.url) ادامه مطلب...
           
           meta(itemprop="url" content="#{article.getUrl(locals.url)}")
+          span(itemprop="publisher" itemscope itemtype="http://schema.org/Person")
+            meta(itemprop="name" content="#{locals.owner}")
           span(itemprop="author" itemscope itemtype="http://schema.org/Person")
             meta(itemprop="name" content="#{article.metadata.author}")
           span(itemprop="image" itemscope itemtype="http://schema.org/ImageObject")
