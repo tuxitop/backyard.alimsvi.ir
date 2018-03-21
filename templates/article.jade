@@ -70,7 +70,7 @@ block content
         
         //- more structured data for better page crawling by search enginess
         meta(itemprop="url" content="#{page.getUrl(locals.url)}")
-        meta(itemprop="mainEntityOfPage" id="#{locals.url}")
+        meta(itemprop="mainEntityOfPage" itemscope itemType='https://schema.org/WebPage' content="#{locals.url}")
         meta(itemprop="dateModified" content="#{page.date.getFullYear()}-#{('0' + (page.date.getMonth()+1)).slice(-2)}-#{('0' + page.date.getDate()).slice(-2)}")
         span(itemprop="publisher" itemscope itemtype="http://schema.org/Organization")
           meta(itemprop="name" content="#{locals.name}")
