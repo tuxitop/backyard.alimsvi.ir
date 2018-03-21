@@ -32,12 +32,12 @@ html(lang="en")
       .container
         block footer
         .copyright.text-center
-          p copyright &copy; #{ new Date().getFullYear() } #{ locals.owner }
+          p copyright &copy; #{ new Date().getFullYear() } #{ locals.owner_en }
 
     block javascripts
       script(src=contents.js['jquery-3.2.1.min.js'].url)
       script(src=contents.js['bootstrap.min.js'].url)
-      script(src=contents.js['main.js'].url)
+      script#mainJS(disqusID='#{locals.disqusID}' src=contents.js['main.js'].url)
       
       //- load mathjax only if required  
       if mathjax

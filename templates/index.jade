@@ -94,6 +94,8 @@ block content
       if nextPage
         .load-more.bg-success
           p.text-center در حال بارگزاری مقالات بیشتر...
+          .hidden.text-center#loadNextPageAJAXButton
+            button.btn.btn-primary(type="submit") تلاش دوباره
           .hidden
             a.next-page(href=locals.url + nextPage.url) صفحه بعد
 
