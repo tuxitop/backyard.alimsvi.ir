@@ -1,5 +1,25 @@
 var processingAjax = false;
 
+function loadNextPageAJAX() {
+  processingAjax = true;
+  var nextHref = $('.next-page').attr('href');
+  var disqusID = $('#mainJS').attr('disqusID');
+  $.ajax({ type: 'GET', url: nextHref,
+    success : function(text){
+      var article = $(text).find('.list-articles').html();
+      $('.load-more').replaceWith(article);
+      $.getScript('//' + disqusID +'.disqus.com/count.js');
+      processingAjax = false;
+    },
+    error: function() {
+      $('.load-more').removeClass('bg-success');
+      $('.load-more').addClass('bg-danger');
+      $('.load-more > p').text('بارگزاری با مشکل روبرو شد.');
+      $('#loadNextPageAJAXButton').removeClass('hidden');
+    }
+  });
+}
+
 $(document).ready(function() {
   // fix navbar to top
   $(document).scroll(function() {
@@ -20,23 +40,14 @@ $(document).ready(function() {
     if ($('.load-more').length > 0) {
       var topDistMore = $('.load-more').position().top - $('.load-more').outerHeight();
       if ($(window).scrollTop() + $(window).height() > topDistMore) {
-        processingAjax = true;
-        var nextHref = $('.next-page').attr('href');
-        $.ajax({ type: 'GET', url: nextHref,
-          success : function(text){
-            var article = $(text).find('.list-articles').html();
-            $('.load-more').replaceWith(article);
-            $.getScript('//alimsvi.disqus.com/count.js');
-            processingAjax = false;
-          },
-          error: function() {
-            $('.load-more').removeClass('bg-success');
-            $('.load-more').addClass('bg-danger');
-            $('.load-more > p').text('بارگزاری با مشکل روبرو شد.');
-          }
-        });
+        loadNextPageAJAX();
       }
     }
+  });
+
+  // Try Again button if AJAX failed
+  $('#loadNextPageAJAXButton > button').click(function() {
+    loadNextPageAJAX();
   });
 
   // run colorbox to have image lightbox
