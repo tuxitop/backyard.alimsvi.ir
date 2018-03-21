@@ -26,7 +26,7 @@ block append head
       "image": {  
         "@type": "ImageObject",
         "contentUrl": "#{locals.url}#{contents.css.images['backyardstories_cropped.png'].url}",
-        "url": "{locals.url}",
+        "url": "#{locals.url}",
         "width": "258",
         "height": "267"
        },
@@ -68,14 +68,21 @@ block content
               meta(itemprop="articleBody" content="#{page.html}")
               != typogr(page.html).typogrify()
         
+        //- more structured data for better page crawling by search enginess
         meta(itemprop="url" content="#{page.getUrl(locals.url)}")
+        meta(itemprop="mainEntityOfPage" id="#{locals.url}")
+        meta(itemprop="dateModified" content="#{page.date.getFullYear()}-#{('0' + (page.date.getMonth()+1)).slice(-2)}-#{('0' + page.date.getDate()).slice(-2)}")
         span(itemprop="publisher" itemscope itemtype="http://schema.org/Organization")
           meta(itemprop="name" content="#{locals.name}")
+          span(itemprop="logo" itemscope itemtype="http://schema.org/ImageObject")
+            meta(itemprop="url" content="#{locals.url}#{contents.css.images['backyardstories_cropped.png'].url}")
+            meta(itemprop="width" content="258")
+            meta(itemprop="height" content="267")
           meta(itemprop="logo" content="#{locals.url}#{contents.css.images['backyardstories_cropped.png'].url}")
         span(itemprop="author" itemscope itemtype="http://schema.org/Person")
           meta(itemprop="name" content="#{page.metadata.author}")
         span(itemprop="image" itemscope itemtype="http://schema.org/ImageObject")
-          mete(itemprop="url" content="#{locals.url}#{contents.css.images['backyardstories_cropped.png'].url}")
+          meta(itemprop="url" content="#{locals.url}#{contents.css.images['backyardstories_cropped.png'].url}")
           meta(itemprop="width" content="258")
           meta(itemprop="height" content="267")
   .container.section-container.subscribe

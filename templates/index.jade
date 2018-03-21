@@ -30,7 +30,7 @@ block append head
       "image": {  
         "@type": "ImageObject",
         "contentUrl": "#{locals.url}#{contents.css.images['backyardstories_cropped.png'].url}",
-        "url": "{locals.url}",
+        "url": "#{locals.url}",
         "width": "258",
         "height": "267"
        },
@@ -49,7 +49,7 @@ block content
             .col-md-2.hidden-xs.hidden-sm.meta.meta-sidebar
               .data.text-muted
                 span.fa.fa-calendar
-                spanspan(itemprop="datePublished" content="#{article.date.getFullYear()}-#{('0' + (article.date.getMonth()+1)).slice(-2)}-#{('0' + article.date.getDate()).slice(-2)}")
+                span(itemprop="datePublished" content="#{article.date.getFullYear()}-#{('0' + (article.date.getMonth()+1)).slice(-2)}-#{('0' + article.date.getDate()).slice(-2)}")
                   = moment.utc(article.date).format('jDD jMMMM jYYYY')
               .comments.text-muted
                 span.fa.fa-comment 
@@ -61,7 +61,7 @@ block content
                     span(itemprop="headline name")= article.title
                 .meta.hidden-md.hidden-lg.text-muted
                   span.fa.fa-calendar
-                  spanspan(itemprop="datePublished" content="#{article.date.getFullYear()}-#{('0' + (article.date.getMonth()+1)).slice(-2)}-#{('0' + article.date.getDate()).slice(-2)}")
+                  span(itemprop="datePublished" content="#{article.date.getFullYear()}-#{('0' + (article.date.getMonth()+1)).slice(-2)}-#{('0' + article.date.getDate()).slice(-2)}")
                     = moment.utc(article.date).format('jDD jMMMM jYYYY')
                   span.seperator -
                   span.fa.fa-comment 
@@ -74,14 +74,20 @@ block content
                   p.more
                     a(href=article.url) ادامه مطلب...
           
+          //- more structured data for better page crawling by search enginess
           meta(itemprop="url" content="#{article.getUrl(locals.url)}")
+          meta(itemprop="mainEntityOfPage" id="#{locals.url}")
+          meta(itemprop="dateModified" content="#{article.date.getFullYear()}-#{('0' + (article.date.getMonth()+1)).slice(-2)}-#{('0' + article.date.getDate()).slice(-2)}")
           span(itemprop="publisher" itemscope itemtype="http://schema.org/Organization")
             meta(itemprop="name" content="#{locals.name}")
-            meta(itemprop="logo" content="#{locals.url}#{contents.css.images['backyardstories_cropped.png'].url}")
+          span(itemprop="logo" itemscope itemtype="http://schema.org/ImageObject")
+            meta(itemprop="url" content="#{locals.url}#{contents.css.images['backyardstories_cropped.png'].url}")
+            meta(itemprop="width" content="258")
+            meta(itemprop="height" content="267")
           span(itemprop="author" itemscope itemtype="http://schema.org/Person")
             meta(itemprop="name" content="#{article.metadata.author}")
           span(itemprop="image" itemscope itemtype="http://schema.org/ImageObject")
-            mete(itemprop="url" content="#{locals.url}#{contents.css.images['backyardstories_cropped.png'].url}")
+            meta(itemprop="url" content="#{locals.url}#{contents.css.images['backyardstories_cropped.png'].url}")
             meta(itemprop="width" content="258")
             meta(itemprop="height" content="267")
           
