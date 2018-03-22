@@ -40,7 +40,6 @@
     "wintersmith-contents",
     "wintersmith-sitemap",
     "wintersmith-robots",
-    "wintersmith-yaml",
     "./plugins/wintersmith-markdown-it/src/index.coffee"
   ],
   "require": {
