@@ -5,8 +5,10 @@
     "owner": "علی موسوی",
     "owner_en": "Ali Mousavi",
     "description": "یا حکایت آن چه این روزها، در این پشت می‌گذرد...",
+    "commentingSystem": "disqus",
     "disqusID": "mrwill",
     "gaTrackingID": "UA-3973192-2",
+    "staticmanAPI": "https://api.staticman.net/v2/entry/tuxitop/backyard.alimsvi.ir/master/comments",
     "sitemap": "sitemap.xml",
     "environment": "development",
     "socialMedia": [
@@ -38,6 +40,7 @@
     "wintersmith-contents",
     "wintersmith-sitemap",
     "wintersmith-robots",
+    "wintersmith-yaml",
     "./plugins/wintersmith-markdown-it/src/index.coffee"
   ],
   "require": {

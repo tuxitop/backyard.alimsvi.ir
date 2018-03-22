@@ -113,4 +113,5 @@ block content
     .toggle.toggle-large.fa.fa-chevron-right.hidden-xs
 
 block append javascripts
-  script(id="dsq-count-scr" src="//#{locals.disqusID}.disqus.com/count.js" async)
+  if (locals.commentingSystem == "disqus")
+    script(id="dsq-count-scr" src="//mrwill.disqus.com/count.js" async)

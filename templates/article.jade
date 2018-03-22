@@ -96,11 +96,13 @@ block content
     .row
       .col-md-offset-2.col-md-8
         include subscribe-embeded                
-
-  .container.section-container.comments
-    .row
-      .col-md-offset-2.col-md-8
-        include disqus
+  
+  
+  if (locals.commentingSystem == "disqus")
+    include disqus
+  else if (locals.commentingSystem == "staticman")
+    include staticman
 
 block append javascripts
-  script(id="dsq-count-scr" src="//mrwill.disqus.com/count.js" async)
+  if (locals.commentingSystem == "disqus")
+    script(id="dsq-count-scr" src="//mrwill.disqus.com/count.js" async)

@@ -3,12 +3,14 @@ var processingAjax = false;
 function loadNextPageAJAX() {
   processingAjax = true;
   var nextHref = $('.next-page').attr('href');
-  var disqusID = $('#mainJS').attr('disqusID');
+  var disqusID = $('#mainJS').attr('data-disqusID');
+  var commenting = $('#mainJS').attr('data-commenting');
   $.ajax({ type: 'GET', url: nextHref,
     success : function(text){
       var article = $(text).find('.list-articles').html();
       $('.load-more').replaceWith(article);
-      $.getScript('//' + disqusID +'.disqus.com/count.js');
+      if (commenting == 'disqus')
+        $.getScript('//' + disqusID +'.disqus.com/count.js');
       processingAjax = false;
     },
     error: function() {
