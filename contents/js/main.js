@@ -9,8 +9,9 @@ function loadNextPageAJAX() {
     success : function(text){
       var article = $(text).find('.list-articles').html();
       $('.load-more').replaceWith(article);
-      if (commenting == 'disqus')
+      if (commenting === 'disqus') {
         $.getScript('//' + disqusID +'.disqus.com/count.js');
+      }
       processingAjax = false;
     },
     error: function() {

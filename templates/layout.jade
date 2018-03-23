@@ -58,7 +58,7 @@ html(lang="en")
     block javascripts
       script(src=contents.js['jquery-3.2.1.min.js'].url)
       script(src=contents.js['bootstrap.min.js'].url)
-      script#mainJS(data-commenting='disqus' data-disqusID='#{locals.disqusID}' src=contents.js['main.js'].url)
+      script#mainJS(data-commenting='#{locals.commentingSystem}' data-disqusID='#{locals.disqusID}' src=contents.js['main.js'].url)
       
       //- load mathjax only if required  
       if mathjax
