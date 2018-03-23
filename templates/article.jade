@@ -9,7 +9,7 @@ block append head
   script(type='application/ld+json').
     {
       "@context": "http://schema.org",
-      "@type": "Blog",
+      "@type": "BlogPosting",
       "name": "#{locals.name}",
       "description": "#{locals.description}",
       "headline": "#{locals.name}",
@@ -22,7 +22,7 @@ block append head
         "@type": "Person",
         "name": "#{locals.owner}"
       },
-      "url": "#{locals.url}",
+      "url": "#{page.getUrl(locals.url)}",
       "image": {  
         "@type": "ImageObject",
         "contentUrl": "#{locals.url}#{contents.css.images['backyardstories_cropped.png'].url}",
@@ -54,7 +54,16 @@ block content
               span!= Math.ceil(page.html.replace(/<(?:.|\n)*?>/gm, '').split(' ').length / 275) + ' دقیقه مطالعه'
             .comments.text-muted
               i.fa.fa-comment
-              a(href='#disqus_thread') نظر دهید
+              if locals.commentingSystem == "disqus"
+                a(href='#disqus_thread') نظر دهید
+              else if locals.commentingSystem == "staticman"
+                - var postID = page.getFilename().split("/").slice(-2)[0]
+                - var postComments = contents.comments[postID]
+                if postComments
+                  a(href='#comments') #{Object.keys(postComments).length} دیدگاه
+                else
+                  a(href='#comment-form') نظر دهید
+              
           .col-md-8.col-sm-12(role="main")
             header
               h2

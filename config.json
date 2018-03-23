@@ -5,7 +5,7 @@
     "owner": "علی موسوی",
     "owner_en": "Ali Mousavi",
     "description": "یا حکایت آن چه این روزها، در این پشت می‌گذرد...",
-    "commentingSystem": "disqus",
+    "commentingSystem": "staticman",
     "disqusID": "mrwill",
     "gaTrackingID": "UA-3973192-2",
     "staticmanAPI": "https://api.staticman.net/v2/entry/tuxitop/backyard.alimsvi.ir/master/comments",

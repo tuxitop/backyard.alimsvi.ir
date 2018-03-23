@@ -22,6 +22,12 @@ function loadNextPageAJAX() {
   });
 }
 
+function handleReplyButton(id, level, name) {
+  $('#reply-to').val(id);
+  $('#reply-level').val(level + 1);
+  $('#comment-form-title').text('پاسخ به ' + name + ':');
+}
+
 $(document).ready(function() {
   // fix navbar to top
   $(document).scroll(function() {

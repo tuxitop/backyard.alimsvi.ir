@@ -56,7 +56,15 @@ block content
                 span!= Math.ceil(article.html.replace(/<(?:.|\n)*?>/gm, '').split(' ').length / 275) + ' دقیقه مطالعه'
               .comments.text-muted
                 i.fa.fa-comment 
-                a(href=article.url + '#disqus_thread') نظر دهید
+                if locals.commentingSystem == "disqus"
+                  a(href='#disqus_thread') نظر دهید
+                else if locals.commentingSystem == "staticman"
+                  - var postID = article.getFilename().split("/").slice(-2)[0]
+                  - var postComments = contents.comments[postID]
+                  if postComments
+                    a(href='#comments') #{Object.keys(postComments).length} دیدگاه
+                  else
+                    a(href='#comment-form') نظر دهید
             .col-md-8.col-sm-12(role="main")
               header
                 h2
