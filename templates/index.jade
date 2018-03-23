@@ -60,7 +60,7 @@ block content
                   a(href='#disqus_thread') نظر دهید
                 else if locals.commentingSystem == "staticman"
                   - var postID = article.getFilename().split("/").slice(-2)[0]
-                  - var postComments = contents.comments[postID]
+                  - var postComments = contents.comments ? contents.comments[postID] : null
                   if postComments
                     a(href='#comments') #{Object.keys(postComments).length} دیدگاه
                   else

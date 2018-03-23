@@ -1,5 +1,5 @@
 - var postID = page.getFilename().split("/").slice(-2)[0]
-- var comments = contents.comments[postID]
+- var comments = contents.comments ? contents.comments[postID] : null
 
 if comments
   .container.section-container.comments#comments
