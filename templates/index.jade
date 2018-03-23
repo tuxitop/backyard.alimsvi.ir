@@ -62,9 +62,9 @@ block content
                   - var postID = article.getFilename().split("/").slice(-2)[0]
                   - var postComments = contents.comments ? contents.comments[postID] : null
                   if postComments
-                    a(href='#comments') #{Object.keys(postComments).length} دیدگاه
+                    a(href='#{article.getUrl(locals.url)}#comments') #{Object.keys(postComments).length} دیدگاه
                   else
-                    a(href='#comment-form') نظر دهید
+                    a(href='#{article.getUrl(locals.url)}#comment-form') نظر دهید
             .col-md-8.col-sm-12(role="main")
               header
                 h2
