@@ -17,12 +17,12 @@ if comments
       h3#comment-form-title.comment.form.title یک دیدگاه تازه بگذارید
       
       form.post-comment(method="POST" action="#{locals.staticmanAPI}")
-        input(type="hidden" name="options[slug]" value=postID)
-        input(type="hidden" name="options[postID]" value=postID)
-        input(type="hidden" name="options[redirect]" value="#{page.getUrl(locals.url)}#post-submitted")
-        input(type="hidden" name="options[redirectError]" value="#{page.getUrl(locals.url)}#post-failed")
-        input#reply-to(type="hidden" name="fields[reply_to]" value="")
-        input#reply-level(type="hidden" name="fields[reply_level]" value="1")
+        input(type="hidden" name="options[slug]" value=postID autocomplete="off")
+        input(type="hidden" name="options[postID]" value=postID autocomplete="off")
+        input(type="hidden" name="options[redirect]" value="#{page.getUrl(locals.url) }#post-submitted" autocomplete="off")
+        input(type="hidden" name="options[redirectError]" value="#{page.getUrl(locals.url)}#post-failed" autocomplete="off")
+        input#reply-to(type="hidden" name="fields[reply_to]" value="" autocomplete="off")
+        input#reply-level(type="hidden" name="fields[reply_level]" value="1" autocomplete="off")
         
         fieldset.form-group
           label.sr-only(for="fields[name]") Content
