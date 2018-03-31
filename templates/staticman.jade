@@ -21,6 +21,8 @@ if comments
         input(type="hidden" name="options[postID]" value=postID autocomplete="off")
         input(type="hidden" name="options[redirect]" value="#{page.getUrl(locals.url) }#post-submitted" autocomplete="off")
         input(type="hidden" name="options[redirectError]" value="#{page.getUrl(locals.url)}#post-failed" autocomplete="off")
+        input(type="hidden" name="options[reCaptcha][siteKey]" value="#{locals.recaptchaSiteKey}" autocomplete="off")
+        input(type="hidden" name="options[reCaptcha][secret]" value="#{locals.recaptchaSecret}" autocomplete="off")
         input#reply-to(type="hidden" name="fields[reply_to]" value="" autocomplete="off")
         input#reply-level(type="hidden" name="fields[reply_level]" value="1" autocomplete="off")
         
