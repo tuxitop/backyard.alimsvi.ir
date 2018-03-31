@@ -38,7 +38,7 @@ gulp.task('clean', () => {
 gulp.task('sass', () => {
   gulp.src(dirs.contents + '/sass/**/*.scss')
     .pipe(sass({includePaths: require("bourbon").includePaths}).on('error', sass.logError))
-    .pipe(gulp.dest('css'));
+    .pipe(gulp.dest(dirs.contents + '/css'));
 });
 
 // autoprefix css attributes
