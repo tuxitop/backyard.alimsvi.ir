@@ -21,8 +21,6 @@ if comments
         input(type="hidden" name="options[postID]" value=postID autocomplete="off")
         input(type="hidden" name="options[redirect]" value="#{page.getUrl(locals.url) }#post-submitted" autocomplete="off")
         input(type="hidden" name="options[redirectError]" value="#{page.getUrl(locals.url)}#post-failed" autocomplete="off")
-        input(type="hidden" name="options[origin]" value="#{page.getUrl(locals.url)}" autocomplete="off")
-        input(type="hidden" name="options[parent]" value=postID autocomplete="off")
         input(type="hidden" name="options[reCaptcha][siteKey]" value="#{locals.recaptchaSiteKey}" autocomplete="off")
         input(type="hidden" name="options[reCaptcha][secret]" value="#{locals.recaptchaSecret}" autocomplete="off")
         input#reply-to(type="hidden" name="fields[reply_to]" value="" autocomplete="off")
@@ -53,12 +51,6 @@ if comments
               i.fa.fa-globe
             input.form-control(type="text" name='fields[url]' placeholder='وبسایت')
         
-        fieldset.form-group
-          .checkbox.notify-me
-            label
-              input(type="checkbox" id="comment-form-reply" name="options[subscribe]" value='email')
-              | مرا از دیدگاه‌های آینده برای این نوشته آگاه کن.
-
         fieldset.form-group
           .g-recaptcha(data-siteKey="#{locals.recaptchaSiteKey}" data-callback="enableCommentSubmit" data-expired-callback="disableCommentSubmit")
 
