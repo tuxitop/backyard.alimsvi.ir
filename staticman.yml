@@ -62,7 +62,7 @@ comments:
 
   reCaptcha:
     enabled: true
-    siteKey: "6LdsDFAUAAAAAIzYBd79apO6k08uWmQHSPrs90Z"
+    siteKey: "6LdsDFAUAAAAAIzYBd79apO6k08uWmQHSPrs90Z-"
     secret: "0CbNri4TDKztXsq9O64bCgALqeHxnlC/AUP2FZfmxxYiOFO9VzFwyCxpZ5FViQd6sbv74Q6Xn+bun6nq/m3ezsBvT2TEiYTViDZptZ4dohzIU/7ofY/9q4utR4YsvJa0XIAhfRi//rY6Hbv48+tW0jCcft9jdDGJJmXoQOr7JxU="
 
   # (*) REQUIRED
