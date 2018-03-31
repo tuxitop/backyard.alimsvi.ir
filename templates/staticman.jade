@@ -56,7 +56,12 @@ if comments
               | مرا از دیدگاه‌های آینده برای این نوشته آگاه کن.
 
         fieldset.form-group
-          button.btn.btn-default(type="submit") ارسال
+          .g-recaptcha(data-siteKey="#{locals.recaptchaSiteKey}" data-callback="enableCommentSubmit" data-expired-callback="disableCommentSubmit")
+
+        fieldset.form-group
+          button.btn.btn-default#comment-submit(type="submit" disabled autocomplete="off") ارسال
+
+      script(async src="https://www.google.com/recaptcha/api.js?hl=fa")
       
 div#post-submitted.alert.alert-success.dialog
   h3 متشکرم
@@ -64,7 +69,7 @@ div#post-submitted.alert.alert-success.dialog
   if (locals.githubPullURL)
     p.
       برای مشاهده پیامی که ارسال کردید در گیت‌هاب 
-      a(href="{{ locals.githubPullURL }}") اینجا را کلیک کنید
+      a(href="#{locals.githubPullURL}") اینجا را کلیک کنید
       
   a.btn.btn-primary(href="#") تایید
   </div>

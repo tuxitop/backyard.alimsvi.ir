@@ -7,6 +7,7 @@
     "description": "یا حکایت آن چه این روزها، در این پشت می‌گذرد...",
     "commentingSystem": "staticman",
     "disqusID": "mrwill",
+    "recaptchaSiteKey": "6LeRECgUAAAAAP9Xvm5SMVybb_Nnc0Ez7x18AG31",
     "gaTrackingID": "UA-3973192-2",
     "staticmanAPI": "https://api.staticman.net/v2/entry/tuxitop/backyard.alimsvi.ir/master/comments",
     "sitemap": "sitemap.xml",

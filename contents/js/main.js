@@ -29,6 +29,15 @@ function handleReplyButton(id, level, name) {
   $('#comment-form-title').text('پاسخ به ' + name + ':');
 }
 
+function enableCommentSubmit() {
+  $('#comment-submit').prop('disabled', false);
+}
+
+
+function disableCommentSubmit() {
+  $('#comment-submit').prop('disabled', true);
+}
+
 $(document).ready(function() {
   // fix navbar to top
   $(document).scroll(function() {

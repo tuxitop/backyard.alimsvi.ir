@@ -60,6 +60,11 @@ comments:
     # Mailgun domain (encrypted)
     domain: "jhKkEx69eZpirIKfKTOU9mVBk5KTUt7JC4S/RQ5f+YU71XvaW4tLw60xHjlvOOK6jJEL8/+valEMzurHS5Hi75GPKBbYdWYBJJYLnbvE+ynVLRqQPVeSCC4dz6yF3Pkp6JQcK7/CTy58BNb5xFnCUX1EZ4MGjMuV0uC/N5Py9FY="
 
+  reCaptcha:
+    enabled: true
+    siteKey: "6LcqDFAUAAAAAMum-a98gwqSDOYKFMdrJHSs5vN6"
+    secret: "pfKD0yCDA43IkS2rUbGrm/q7jeHBSo3aXjcumUd1Gxl1elXdeyIIfZobw1D27jIXRL3BC/JCpXUP7drV71ZCIJ6VU3QWWffJtj8EdNCEjXfubn+mcViqzwKd6mGcNb1YnGyUGFDt4SKOWZaOS+yT5cDWwPYzlN6c5J8Wf/mhQog="
+
   # (*) REQUIRED
   #
   # Destination path (directory) for the data files. Accepts placeholders.
