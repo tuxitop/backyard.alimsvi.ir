@@ -5,9 +5,12 @@ const gulp = require('gulp');
 const gutil = require('gulp-util');
 
 // plugins
-const compass = require('gulp-compass');
+const sass = require('gulp-sass');
 const cleanCSS = require('gulp-clean-css');
 const runWintersmith = require('run-wintersmith');
+const postcss = require('gulp-postcss');
+const sourcemaps = require('gulp-sourcemaps');
+const autoprefixer = require('autoprefixer');
 const ghPages = require('gulp-gh-pages');
 const extend = require('gulp-extend');
 
@@ -32,17 +35,26 @@ gulp.task('clean', () => {
 });
 
 // compile sass files
-gulp.task('compass', () => {
-  gulp.src(dirs.contents + '/sass/**/*.scss').pipe(compass({
-    project: path.join(__dirname, dirs.contents),
-    css: 'css',
-    sass: 'sass'
-  })).pipe(gulp.dest('css'));
+gulp.task('sass', () => {
+  gulp.src(dirs.contents + '/sass/**/*.scss')
+    .pipe(sass({includePaths: require("bourbon").includePaths}).on('error', sass.logError))
+    .pipe(gulp.dest('css'));
+});
+
+// autoprefix css attributes
+gulp.task('autoprefixer', function () {
+  return gulp.src(dirs.content + '/css/main.css')
+    .pipe(sourcemaps.init())
+    .pipe(postcss([ autoprefixer() ]))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(dirs.contents + '/css'));
 });
 
 // minify CSS files
 gulp.task('minify-css', () => {
-  return gulp.src(dirs.contents + '/css/main.css').pipe(cleanCSS()).pipe(gulp.dest(dirs.contents + '/css'));
+  return gulp.src(dirs.contents + '/css/main.css')
+    .pipe(cleanCSS())
+    .pipe(gulp.dest(dirs.contents + '/css'));
 });
 
 gulp.task('create-production-config', function() {
@@ -58,7 +70,7 @@ gulp.task('create-production-config', function() {
 
 // Build task
 gulp.task('build', [
-  'clean', 'compass', 'minify-css', 'create-production-config'
+  'clean', 'sass', 'autoprefixer', 'minify-css', 'create-production-config'
 ], function(cb) {
   // Tell Wintersmith to build
   runWintersmith.build(function() {
@@ -71,7 +83,7 @@ gulp.task('build', [
 });
 
 // Preview task
-gulp.task('preview', ['compass'], function() {
+gulp.task('preview', ['sass'], function() {
   // Tell Wintersmith to run in preview mode
   runWintersmith.preview();
 });
@@ -93,5 +105,5 @@ gulp.task('watch', ['preview'], function() {
     }));
   }
 
-  gulp.watch(dirs.contents + '/sass/**/*.scss', ['compass']).on('change', reportChange);
+  gulp.watch(dirs.contents + '/sass/**/*.scss', ['sass']).on('change', reportChange);
 });
