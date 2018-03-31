@@ -33,22 +33,28 @@ if comments
           .input-group
             .input-group-addon
               i.fa.fa-user
-            input.form-control(type="text" name='fields[name]' placeholder='نام شما' required)
+            input.form-control(type="text" name='fields[name]' placeholder='نام' required)
         
         fieldset.form-group
           label.sr-only(for="fields[email]") Email
           .input-group
             .input-group-addon
               i.fa.fa-envelope
-            input.form-control(type="text" name='fields[email]' placeholder='ایمیل شما (این ایمیل منتشر نخواهد شد.)' required)
+            input.form-control(type="text" name='fields[email]' placeholder='ایمیل (این ایمیل منتشر نخواهد شد.)' required)
         
         fieldset.form-group
           label.sr-only(for="fields[url]") Website
           .input-group
             .input-group-addon
               i.fa.fa-globe
-            input.form-control(type="text" name='fields[url]' placeholder='وبسایت شما')
+            input.form-control(type="text" name='fields[url]' placeholder='وبسایت')
         
+        fieldset.form-group
+          .checkbox.notify-me
+            label
+              input(type="checkbox" id="comment-form-reply" name="options[subscribe]" value='email')
+              | مرا از دیدگاه‌های آینده برای این نوشته آگاه کن.
+
         fieldset.form-group
           button.btn.btn-default(type="submit") ارسال
       
