@@ -1,7 +1,7 @@
 {
   "output": "./build",
   "locals": {
-    "url": "http://backyard.alimsvi.ir",
+    "url": "https://backyard.alimsvi.ir",
     "environment": "production"
   }
 }
