@@ -9,6 +9,10 @@ comments:
   # not here is part of the request, an error will be thrown.
   allowedFields: ["name", "email", "url", "content", "reply_to", "reply_level"]
 
+  # When allowedOrigins is defined, only requests sent from one of the domains
+  # listed will be accepted.
+  allowedOrigins: ["localhost", "alimsvi.ir"]
+
   # (*) REQUIRED
   #
   # Name of the branch being used. Must match the one sent in the URL of the
