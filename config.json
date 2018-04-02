@@ -42,7 +42,7 @@
     "wintersmith-contents",
     "wintersmith-sitemap",
     "wintersmith-robots",
-    "./plugins/wintersmith-markdown-it/src/index.coffee"
+    "./plugins/wintersmith-markdown-it/index.coffee"
   ],
   "require": {
     "moment": "moment-jalaali",
