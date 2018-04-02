@@ -54,6 +54,7 @@
   },
   "markdown-it": {
     "settings": {
+      "html": true,
       "linkify": true
     },
     "markdown-it-block-embed": {},
