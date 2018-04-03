@@ -6,11 +6,11 @@
     "owner_en": "Ali Mousavi",
     "description": "یا حکایت آن چه این روزها، در این پشت می‌گذرد...",
     "commentingSystem": "staticman",
+    "staticmanAPI": "https://api.staticman.net/v2/entry/tuxitop/backyard.alimsvi.ir/master/comments",
     "disqusID": "mrwill",
     "recaptchaSiteKey": "6LdsDFAUAAAAAIzYBd79apO6k08uWmQHSPrs90Z-",
     "recaptchaSecret": "0CbNri4TDKztXsq9O64bCgALqeHxnlC/AUP2FZfmxxYiOFO9VzFwyCxpZ5FViQd6sbv74Q6Xn+bun6nq/m3ezsBvT2TEiYTViDZptZ4dohzIU/7ofY/9q4utR4YsvJa0XIAhfRi//rY6Hbv48+tW0jCcft9jdDGJJmXoQOr7JxU=",
     "gaTrackingID": "UA-3973192-2",
-    "staticmanAPI": "https://api.staticman.net/v2/entry/tuxitop/backyard.alimsvi.ir/master/comments",
     "sitemap": "sitemap.xml",
     "environment": "development",
     "socialMedia": [
@@ -32,7 +32,7 @@
     ],
     "navbar": {
       "آرشیو": "/archive.html",
-      "داده‌های خام": "http://alimsvi.ir"
+      "داده‌های خام": "https://rawdata.alimsvi.ir"
     }
   },
   "plugins": [

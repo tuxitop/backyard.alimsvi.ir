@@ -79,7 +79,15 @@ block content
                   span!= Math.ceil(article.html.replace(/<(?:.|\n)*?>/gm, '').split(' ').length / 275) + ' دقیقه مطالعه'
                   .comments
                     i.fa.fa-comment 
-                    a(href='#disqus_thread') نظر دهید
+                    if locals.commentingSystem == "disqus"
+                      a(href='#disqus_thread') نظر دهید
+                    else if locals.commentingSystem == "staticman"
+                      - var postID = article.getFilename().split("/").slice(-2)[0]
+                      - var postComments = contents.comments ? contents.comments[postID] : null
+                      if postComments
+                        a(href='#{article.getUrl(locals.url)}#comments') #{Object.keys(postComments).length} دیدگاه
+                      else
+                        a(href='#{article.getUrl(locals.url)}#comment-form') نظر دهید
               .section.content
                 meta(itemprop="articleBody" content="#{article.html}")
                 if article.intro.length > 0
@@ -87,7 +95,7 @@ block content
                 if article.hasMore
                   p.more
                     a(href=article.url) ادامه مطلب...
-          
+
           //- more structured data for better page crawling by search enginess
           meta(itemprop="url" content="#{article.getUrl(locals.url)}")
           meta(itemprop="mainEntityOfPage" itemscope itemType='https://schema.org/WebPage' content="#{locals.url}")

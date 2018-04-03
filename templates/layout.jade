@@ -7,7 +7,7 @@ doctype html
 html(lang="en")
   head
     block head
-      <!-- Global site tag (gtag.js) - Google Analytics -->
+      //- Global site tag (gtag.js) - Google Analytics
       script(async src="//www.googletagmanager.com/gtag/js?id=#{locals.gaTrackingID}")
       script.
         window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '#{locals.gaTrackingID}');
@@ -63,6 +63,7 @@ html(lang="en")
       //- load mathjax only if required  
       if mathjax
         include mathjax
+      
       //- lightbox stuff
       script(src=contents.js.colorbox['jquery.colorbox-min.js'].url)
       script(src=contents.js.colorbox['jquery.colorbox-fa.js'].url)
